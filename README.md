@@ -8,7 +8,7 @@
 - **Persistencia de datos**: Guarda automáticamente en `localStorage` para no perder información.
 - **Código ligero y eficiente**: Sin dependencias pesadas ni configuraciones complicadas.
 
-## 💡 ¿Por qué Minimal Notes?
+## 💡 ¿Por qué WorkNotes?
 Si te cansan las aplicaciones de notas sobrecargadas de opciones innecesarias, Minimal Notes es para ti. Escribe, guarda y sigue adelante.
 
 ## 📦 Instalación
