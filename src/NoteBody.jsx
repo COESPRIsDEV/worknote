@@ -45,7 +45,7 @@ function NoteBody({ current, updateCurrent, updateNotes }) {
     return () => {
       window.removeEventListener('paste', handlePaste);
     };
-  }, [current.images, updateCurrent]);
+  }, [current.images, updateCurrent, success]);
 
   return (
     <div className="note-body">
