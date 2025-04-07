@@ -1,0 +1,161 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  
+}
+
+.card {
+  padding: 1.5rem;
+}
+
+.navbar{
+
+  height: 4rem;
+  width: 100%;
+  overflow: auto;
+  position: relative;
+
+  /*border: solid 1px red;*/
+}
+
+.nav-btn{
+  font-weight: bolder;
+  text-transform:uppercase;
+  height: 1.8rem;
+  text-align: left;
+  position: absolute;
+  line-height: .1rem;
+  bottom: 0;
+  border-radius: .5rem;
+  margin: 0rem 0rem .5rem;
+}
+
+.plus{
+  position: absolute;
+  padding: 0.8rem;
+  bottom: 2vh;
+  left: 2vh;
+  z-index: 50;
+  border-radius: .5rem 3rem 1rem 0.5rem ;
+  height: 5rem;
+  width: 5rem;
+  font-size: 3rem;
+  text-align: center;
+  background-color:#121212;
+}
+
+.nav-btn.object {
+  padding: 0.2rem;
+  padding-left: .4rem;
+  text-overflow: clip;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 7rem;
+  height: 2.5rem;
+}
+
+.nav-btn.object.selected{
+  border: solid 2px #ffffff;
+  height: 3rem;
+}
+
+.nav-btn.object.selected:hover {
+  border: solid 3px #ffffff;
+}
+
+.nav-btn.object:hover{
+  border: solid 1px #ffffff;
+}
+
+h1{
+  text-align: left;
+  margin-left: 0;
+}
+
+.notes-container{
+
+  width: 90%;
+  height: 70vh;
+  padding: 5%;
+  background-color: #151515;
+  border-radius: .3rem;
+}
+
+.notes-header{
+  height: 2.5rem;
+  border-bottom: solid 2px rgb(134, 134, 134);
+}
+
+.subtitle{
+  letter-spacing: 0.15rem;
+  font-style: italic;
+  font-size: 1.5rem;
+  float: left;
+  background-color: transparent;
+  border: 0px
+}
+.subtitle:focus{
+  outline: none
+}
+
+.trash-Btn{
+  background-color:transparent;
+  border-radius: 2rem;
+  font-weight: 900;
+  font-size: large;
+  padding: 0.3rem 0.5rem 0.1rem 0.5rem;
+  float: right;
+}
+
+.color-input{
+  border: 0px;
+  border-radius: 0.3rem;
+  width: 2rem;
+  margin-right: 2rem;
+  float: right;
+}
+
+.note-body{
+  height: 63vh;
+  border-radius: 0rem 0rem .5rem .5rem;
+  position: relative;
+}
+
+.upper-body {
+  height: 98%;
+  width: 99%;
+  background-color: #202020;
+  overflow: scroll;
+  border-radius: 0rem 0rem .5rem .5rem;
+}
+.upper-body:focus {
+  outline: none
+}
+
+.lower-body{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.lower-body .btn {
+  margin-right: 1rem;
+  border: solid 1px rgb(134, 134, 134);
+}
+
+.save{
+  background-color: rgb(134, 134, 134);
+  color: #151515;
+  font-weight: 900;
+  width: 4rem;
+}
+
+.btn:hover{
+  border: solid 1px rgb(202, 202, 202);
+}
+
+.custom-file-upload{
+  padding: 0.7rem 1.2rem;
+  background-color: #1a1a1a;
+  border-radius: .5rem;
+}
