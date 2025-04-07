@@ -1,50 +1,69 @@
-import { FaCamera } from 'react-icons/fa6';
-import { FaPaperclip } from 'react-icons/fa';
-import { FaRegSave } from 'react-icons/fa';
 import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
-function NoteBody({ current, updateContent, updateNotes }) {
+import ImageList from './ImageList';
+import ButtonsSection from './BtnSect';
+
+function NoteBody({ current, updateCurrent, updateNotes }) {
+  const success = {
+    position: 'bottom-right',
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+  };
   useEffect(() => {
-    window.addEventListener('paste', (e) => {
-      //TODO:
-      // e.clipboardData.files;
-    });
+    const handlePaste = (e) => {
+      if (!e.clipboardData || !e.clipboardData.items) return;
+
+      const items = e.clipboardData.items;
+      for (let item of items) {
+        if (item.type.startsWith('image')) {
+          const archivoTemporal = item.getAsFile();
+          const reader = new FileReader();
+
+          reader.onload = (event) => {
+            const imagenPegada = [
+              ...current.images,
+              { src: event.target.result }, // Guarda la imagen pegada como dataURL
+            ];
+            updateCurrent('images', imagenPegada);
+            toast.info('Imagen Pegada desde el portapapeles', success);
+          };
+
+          reader.readAsDataURL(archivoTemporal); // Convierte la imagen en dataURL
+          e.preventDefault(); // Previene el comportamiento de pegado predeterminado
+        }
+      }
+    };
+
+    window.addEventListener('paste', handlePaste);
 
     return () => {
-      window.removeEventListener('paste');
+      window.removeEventListener('paste', handlePaste);
     };
-  }, []);
+  }, [current.images, updateCurrent]);
 
   return (
     <div className="note-body">
       <textarea
         type="text"
         className="upper-body"
+        style={{ height: '97%' }}
         value={current.content}
-        onChange={(e) => updateContent(e.target.value)}
+        onChange={(e) => updateCurrent('content', e.target.value)}
       ></textarea>
-      <div className="lower-body">
-        <button type="button" className="btn">
-          <FaCamera />
-        </button>
-        <label for="file-upload" className="btn custom-file-upload">
-          <FaPaperclip />
-        </label>
-        <input
-          id="file-upload"
-          style={{ display: 'none' }}
-          type="file"
-          accept="image/png, image/jpeg, image/jpg"
-        />
-        <button
-          type="button"
-          className="btn save"
-          onClick={() => updateNotes(current)}
-        >
-          <FaRegSave />
-        </button>
-      </div>
+      <ImageList images={current.images} />
+      <ButtonsSection
+        updateNotes={updateNotes}
+        current={current}
+        updateCurrent={updateCurrent}
+      />
     </div>
   );
 }
+
 export default NoteBody;

@@ -1,13 +1,13 @@
 import { FaRegTrashAlt } from 'react-icons/fa';
 
-function NoteHeader({ current, updateTitle, deleteNote, updateColor }) {
+function NoteHeader({ current, updateCurrent, deleteNote }) {
   return (
     <div className="notes-header">
       <input
         type="text"
         className="subtitle"
         value={current.title}
-        onChange={(e) => updateTitle(e.target.value)}
+        onChange={(e) => updateCurrent('title', e.target.value)}
       />
       <button
         type="button"
@@ -22,7 +22,7 @@ function NoteHeader({ current, updateTitle, deleteNote, updateColor }) {
         id="color"
         className="color-input"
         value={current.color}
-        onChange={(e) => updateColor(e.target.value)}
+        onChange={(e) => updateCurrent('color', e.target.value)}
       />
     </div>
   );

@@ -31,18 +31,29 @@
 }
 
 .plus{
-  position: absolute;
+  position: fixed;
   padding: 0.8rem;
-  bottom: 2vh;
-  left: 2vh;
+  bottom: 1.5vh;
+  left: 1.5vh;
   z-index: 50;
-  border-radius: .5rem 3rem 1rem 0.5rem ;
+  border-radius: 3rem ;
   height: 5rem;
   width: 5rem;
   font-size: 3rem;
   text-align: center;
-  background-color:#121212;
+  background-color:#868686;
+  box-shadow: 6px -5px 5px 0px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 6px -5px 5px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 6px -5px 5px 0px rgba(0, 0, 0, 0.4);
 }
+.plus:hover{
+  height: 5.1rem;
+  width: 5.1rem;
+}
+.plus:active {
+  background-color: #767676;
+}
+
 
 .nav-btn.object {
   padding: 0.2rem;
@@ -73,12 +84,94 @@ h1{
 }
 
 .notes-container{
-
+  height:70vh;
   width: 90%;
-  height: 70vh;
   padding: 5%;
   background-color: #151515;
   border-radius: .3rem;
+}
+
+.images-container {
+  margin-top: 1rem;
+    height: 25vh;
+    border-radius: 0.3rem;
+    border: 3px dashed #767676;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  
+}
+
+video {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  /* Ajusta según sea necesario */
+  border: 2px solid black;
+}
+
+.images-container .text {
+  width: 100%;
+  text-align: center;
+  font-size: xx-large;
+  letter-spacing: .2rem;
+  font-weight: 600;
+  color: #868686;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  height: 100%;
+  max-width: 85%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.image-info {
+  position: absolute;
+  bottom: 0.1rem;
+  right: 0.1rem;
+  background: rgba(0, 0, 0, 0.153);
+  color: white;
+  padding: 0.1rem 0.5rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #767676;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.prev-btn {
+  left: -1rem;
+}
+
+.next-btn {
+  right: -1rem;
 }
 
 .notes-header{
@@ -116,13 +209,12 @@ h1{
 }
 
 .note-body{
-  height: 63vh;
+  height: 40vh;
   border-radius: 0rem 0rem .5rem .5rem;
   position: relative;
 }
 
 .upper-body {
-  height: 98%;
   width: 99%;
   background-color: #202020;
   overflow: scroll;
@@ -140,11 +232,11 @@ h1{
 
 .lower-body .btn {
   margin-right: 1rem;
-  border: solid 1px rgb(134, 134, 134);
+  border: solid 1px #868686;
 }
 
 .save{
-  background-color: rgb(134, 134, 134);
+  background-color: #868686;
   color: #151515;
   font-weight: 900;
   width: 4rem;

@@ -1,31 +1,17 @@
 import { useState } from 'react';
 
 import { ToastContainer, toast } from 'react-toastify';
+import { v4 as uuid } from 'uuid';
+
 import './App.css';
 
 import NotesContainer from './NotesContainer';
 import NavBar from './NavBar';
+import data from './assets/data';
 
 function App() {
   const [active, setActive] = useState(0);
-  const [notes, setNotes] = useState([
-    {
-      id: '67eee00665820960a742abcc',
-      title: 'Williamson Noel',
-      content:
-        'Est duis sunt culpa labore commodo ut in dolor ipsum. Dolore veniam ex adipisicing velit et nisi velit. Pariatur irure minim nisi amet ut adipisicing elit.\r\n',
-      color: '#9400d3',
-      images: [],
-    },
-    {
-      id: '67eee006b38c8d0746ab3e2d',
-      title: 'Bernadette Mcmahon',
-      content:
-        'Officia labore in consequat fugiat velit incididunt dolore elit ullamco et mollit do. Qui ea id reprehenderit duis. Est est enim anim exercitation eu enim. Dolore cupidatat culpa enim tempor tempor commodo eiusmod sunt quis voluptate commodo deserunt. Enim exercitation fugiat excepteur fugiat dolore laborum.\r\n',
-      color: '#40eb34',
-      images: [],
-    },
-  ]);
+  const [notes, setNotes] = useState(data);
 
   const success = {
     position: 'bottom-right',
@@ -38,8 +24,16 @@ function App() {
     theme: 'dark',
   };
 
-  const newNote = (title, content) => {
-    setNotes([...notes, { title: title, content: content }]);
+  const newNote = () => {
+    console.log('click');
+
+    const id = uuid(5);
+    setNotes([
+      ...notes,
+      { id: id, title: 'New Note', content: '', color: '#000000', images: [] },
+    ]);
+
+    toast.success('Nueva nota creada con exito', success);
   };
 
   const updateNotes = (current) => {
@@ -64,6 +58,7 @@ function App() {
     });
     if (confirm('Se eliminara esta nota de manera permanente') === true) {
       setNotes(newNotes);
+      toast.error('Nota Eliminada', success);
     }
   };
 

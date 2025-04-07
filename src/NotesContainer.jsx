@@ -6,39 +6,15 @@ import { useEffect } from 'react';
 function NotesContainer({ deleteNote, active, note, updateNotes }) {
   const [current, setCurrent] = useState(note[active]);
 
-  //la variable de arriba se inicializa con un valor, y si queremos hacer que se actualice
-  //es necesario el uso de useEffect
+  //Actualiza current cada vez que se renderiza el componente
   useEffect(() => {
     setCurrent(note[active] ? note[active] : note[0]);
   }, [active, note]);
 
-  const updateContent = (newContent) => {
+  const updateCurrent = (field, newData) => {
     const newCurrent = {
-      id: current.id,
-      title: current.title,
-      content: newContent,
-      color: current.color,
-      images: current.images,
-    };
-    setCurrent(newCurrent);
-  };
-  const updateTitle = (newTitle) => {
-    const newCurrent = {
-      id: current.id,
-      title: newTitle,
-      content: current.content,
-      color: current.color,
-      images: current.images,
-    };
-    setCurrent(newCurrent);
-  };
-  const updateColor = (color) => {
-    const newCurrent = {
-      id: current.id,
-      title: current.title,
-      content: current.content,
-      color: color,
-      images: current.images,
+      ...current,
+      [field]: newData,
     };
     setCurrent(newCurrent);
   };
@@ -49,12 +25,11 @@ function NotesContainer({ deleteNote, active, note, updateNotes }) {
         <NoteHeader
           current={current}
           deleteNote={deleteNote}
-          updateTitle={updateTitle}
-          updateColor={updateColor}
+          updateCurrent={updateCurrent}
         />
         <NoteBody
           current={current}
-          updateContent={updateContent}
+          updateCurrent={updateCurrent}
           updateNotes={updateNotes}
         />
       </div>
