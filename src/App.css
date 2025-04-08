@@ -6,6 +6,7 @@
 
 .card {
   padding: 1.5rem;
+  text-align: center;
 }
 
 .navbar{
@@ -32,23 +33,28 @@
 
 .plus{
   position: fixed;
-  padding: 0.8rem;
+  padding: 0.7rem;
   bottom: 1.5vh;
   left: 1.5vh;
   z-index: 50;
   border-radius: 3rem ;
   height: 5rem;
   width: 5rem;
-  font-size: 3rem;
+  font-size: 2.8rem;
   text-align: center;
   background-color:#868686;
   box-shadow: 6px -5px 5px 0px rgba(0, 0, 0, 0.4);
-    -webkit-box-shadow: 6px -5px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 6px -5px 5px 0px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 6px -5px 5px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 6px -5px 5px 0px rgba(0, 0, 0, 0.4);
+  transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.1s ease;
 }
 .plus:hover{
-  height: 5.1rem;
-  width: 5.1rem;
+  background-color: #505050;
+  transform: scale(1.1);
+  font-size: 3.1rem;
+  padding: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border: 3px dotted #767676;
 }
 .plus:active {
   background-color: #767676;
@@ -78,13 +84,18 @@
   border: solid 1px #ffffff;
 }
 
-h1{
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   text-align: left;
   margin-left: 0;
+  font-size: clamp(1rem, 8vw, 3rem);
+  /* Mínimo: 1rem, ideal: 8vw, máximo: 3rem */
 }
 
 .notes-container{
-  height:70vh;
+  height:73vh;
   width: 90%;
   padding: 5%;
   background-color: #151515;
@@ -138,9 +149,11 @@ video {
 
 .image {
   height: 100%;
-  max-width: 85%;
-  max-height: 100%;
+  max-width: 6rem;
+  max-height: 6rem;
   object-fit: contain;
+  display: inline-block;
+  
 }
 .image-info {
   position: absolute;
@@ -164,6 +177,14 @@ video {
   padding: 1rem;
   cursor: pointer;
   font-size: 1.5rem;
+transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.1s ease;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: #505050;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .prev-btn {
@@ -176,6 +197,7 @@ video {
 
 .notes-header{
   height: 2.5rem;
+  position: relative;
   border-bottom: solid 2px rgb(134, 134, 134);
 }
 
@@ -195,17 +217,41 @@ video {
   background-color:transparent;
   border-radius: 2rem;
   font-weight: 900;
-  font-size: large;
+  font-size: 1.5rem;
   padding: 0.3rem 0.5rem 0.1rem 0.5rem;
   float: right;
+  background-color: transparent;
+  transition: transform 0.1s ease, font-size 0.1s ease, background-color 0.3s ease;
 }
+.trash-Btn:hover {
+  transform: rotate(-45deg);
+  background-color: #dc1818;
+  border-color: #dc1818;
+}
+
+.trash-Btn.image{
+  position: absolute;
+  height: fit-content;
+  top: 0;
+  right: 0;
+}
+
+.trash-Btn.header{
+  position: absolute;
+  height: fit-content;
+  top: 0;
+  right: 0;
+}
+
 
 .color-input{
   border: 0px;
   border-radius: 0.3rem;
-  width: 2rem;
-  margin-right: 2rem;
-  float: right;
+  width: 1.8rem;
+  height: 1.8rem;
+  position: absolute;
+  bottom: 4px;
+  right: 4rem;
 }
 
 .note-body{

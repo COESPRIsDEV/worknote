@@ -1,9 +1,9 @@
 import { FaPlus } from 'react-icons/fa';
 
-function NavBar({ notes, newNote, changeActive, active }) {
+function NavBar({ notes, createNote, changeActive, active }) {
   return (
     <div>
-      <NavAdd newNote={newNote} />
+      <NavAdd createNote={createNote} />
       <div className="navbar">
         {notes.map((note, index) => {
           return (
@@ -39,9 +39,9 @@ const NavButton = ({ note, index, changeActive, active }) => {
   );
 };
 
-const NavAdd = ({ newNote }) => {
+const NavAdd = ({ createNote }) => {
   return (
-    <button className="plus" type="button" onClick={() => newNote}>
+    <button className="plus" type="button" onClick={() => createNote()}>
       <FaPlus />
     </button>
   );

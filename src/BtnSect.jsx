@@ -52,6 +52,7 @@ const ButtonsSection = ({ updateNotes, current, updateCurrent }) => {
       setCameraActive(true); // Activa la cámara para renderizar el video
     } catch (error) {
       console.error('Error accessing camera:', error);
+      toast.error('Cámara No Detectada', success);
     }
   };
 

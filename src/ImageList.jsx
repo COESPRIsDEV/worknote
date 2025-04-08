@@ -1,6 +1,8 @@
 import { v4 as uuid } from 'uuid';
 import { useState } from 'react';
 
+import { FaRegTrashAlt } from 'react-icons/fa';
+
 const ImageList = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -46,11 +48,16 @@ const Image = ({ image }) => {
 
 const ImageInfo = ({ currentIndex, totalImages }) => {
   return (
-    <div className="image-info">
-      <span>
-        {currentIndex + 1} of {totalImages}
-      </span>
-    </div>
+    <>
+      <div className="image-info">
+        <span>
+          {currentIndex + 1} of {totalImages}
+        </span>
+      </div>
+      <button className="trash-Btn image" type="button">
+        <FaRegTrashAlt />
+      </button>
+    </>
   );
 };
 

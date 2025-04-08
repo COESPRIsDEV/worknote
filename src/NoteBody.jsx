@@ -5,17 +5,17 @@ import ImageList from './ImageList';
 import ButtonsSection from './BtnSect';
 
 function NoteBody({ current, updateCurrent, updateNotes }) {
-  const success = {
-    position: 'bottom-right',
-    autoClose: 1000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: 'dark',
-  };
   useEffect(() => {
+    const success = {
+      position: 'bottom-right',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    };
     const handlePaste = (e) => {
       if (!e.clipboardData || !e.clipboardData.items) return;
 
@@ -45,7 +45,7 @@ function NoteBody({ current, updateCurrent, updateNotes }) {
     return () => {
       window.removeEventListener('paste', handlePaste);
     };
-  }, [current.images, updateCurrent, success]);
+  }, [current.images, updateCurrent]);
 
   return (
     <div className="note-body">

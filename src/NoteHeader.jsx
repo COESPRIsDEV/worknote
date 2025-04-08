@@ -11,7 +11,7 @@ function NoteHeader({ current, updateCurrent, deleteNote }) {
       />
       <button
         type="button"
-        className="trash-Btn"
+        className="trash-Btn header"
         onClick={() => deleteNote(current.id)}
       >
         <FaRegTrashAlt />
