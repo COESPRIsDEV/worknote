@@ -56,7 +56,7 @@ function NoteBody({ current, updateCurrent, updateNotes }) {
         value={current.content}
         onChange={(e) => updateCurrent('content', e.target.value)}
       ></textarea>
-      <ImageList images={current.images} />
+      <ImageList images={current.images} updateCurrent={updateCurrent} />
       <ButtonsSection
         updateNotes={updateNotes}
         current={current}

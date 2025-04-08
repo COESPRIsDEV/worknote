@@ -34,7 +34,7 @@ const NavButton = ({ note, index, changeActive, active }) => {
       type="button"
       onClick={() => changeActive(index)}
     >
-      {note.title}
+      <span className="text">{note.title}</span>
     </button>
   );
 };

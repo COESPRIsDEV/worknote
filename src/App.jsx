@@ -75,7 +75,7 @@ function App() {
       <ToastContainer />
       <div className="card">
         <h1>
-          <img src="./Icono.svg" className="image" />
+          <img src="./Icono.svg" className="image logo" />
           Note Redux --//
         </h1>
         <NavBar
