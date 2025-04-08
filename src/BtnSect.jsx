@@ -45,14 +45,34 @@ const ButtonsSection = ({ updateNotes, current, updateCurrent }) => {
 
   const openCamera = async () => {
     try {
+      // Intentar abrir la cámara trasera
       const cameraStream = await navigator.mediaDevices.getUserMedia({
-        video: true,
+        video: {
+          facingMode: { ideal: 'environment' }, // Intenta usar la cámara trasera
+        },
       });
       setStream(cameraStream); // Guarda el stream en el estado
       setCameraActive(true); // Activa la cámara para renderizar el video
     } catch (error) {
-      console.error('Error accessing camera:', error);
-      toast.error('Cámara No Detectada', success);
+      if (error.name === 'OverconstrainedError') {
+        console.warn(
+          'Cámara trasera no disponible, intentando con la cámara predeterminada...'
+        );
+        try {
+          // Intentar abrir la cámara predeterminada si la trasera falla
+          const defaultStream = await navigator.mediaDevices.getUserMedia({
+            video: true, // Usa cualquier cámara disponible
+          });
+          setStream(defaultStream); // Guarda el stream en el estado
+          setCameraActive(true); // Activa la cámara
+        } catch (defaultError) {
+          console.error('Error al acceder a cualquier cámara:', defaultError);
+          toast.error('No se encontró una cámara disponible', success);
+        }
+      } else {
+        console.error('Error general al acceder a la cámara:', error);
+        toast.error('Cámara No Detectada', success);
+      }
     }
   };
 
