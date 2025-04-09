@@ -16,6 +16,7 @@ function NoteHeader({ current, updateCurrent, deleteNote }) {
       >
         <FaRegTrashAlt />
       </button>
+
       <input
         type="color"
         name="color"
